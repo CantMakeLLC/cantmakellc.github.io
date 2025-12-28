@@ -1,3 +1,3 @@
 **Web Design Project**
 
-##cantmakellc.github.io##
+cantmakellc.github.io
