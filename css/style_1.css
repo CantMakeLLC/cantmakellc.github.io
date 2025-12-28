@@ -1,13 +1,3 @@
-/*
-Theme Name: canmake
-Version: 1.0.4
-*/
-
-/* =================================================================
-   CANMAKE カスタムカラーパレット - 確実な色適用版
-   ================================================================= */
-
-/* CSS変数の定義（フォールバック用） */
 :root {
     --wp--preset--color--canmake-text-black: #444444;
     --wp--preset--color--white: #FFFFFF;
@@ -21,7 +11,7 @@ Version: 1.0.4
     --wp--preset--color--canmake-marker-green: #E6FFEE;
 }
 
-/* テキスト色クラス（エディター＆フロントエンド） */
+
 .has-canmake-text-black-color { color: #444444 !important; }
 .has-white-color { color: #FFFFFF !important; }
 .has-canmake-pink-color { color: #E4007F !important; }
@@ -33,7 +23,7 @@ Version: 1.0.4
 .has-canmake-text-green-color { color: #00A651 !important; }
 .has-canmake-marker-green-color { color: #E6FFEE !important; }
 
-/* 背景色クラス（エディター＆フロントエンド） */
+
 .has-canmake-text-black-background-color { background-color: #444444 !important; }
 .has-white-background-color { background-color: #FFFFFF !important; }
 .has-canmake-pink-background-color { background-color: #E4007F !important; }
@@ -45,13 +35,13 @@ Version: 1.0.4
 .has-canmake-text-green-background-color { background-color: #00A651 !important; }
 .has-canmake-marker-green-background-color { background-color: #E6FFEE !important; }
 
-/* エディター専用スタイル */
+
 .wp-block[data-type] mark {
     padding: 2px 4px;
     border-radius: 3px;
 }
 
-/* エディター内でのマーカー（ハイライト）スタイル */
+
 .editor-styles-wrapper mark.has-canmake-marker-pink-background-color,
 .has-canmake-marker-pink-background-color mark {
     background-color: #FFD6E7 !important;
@@ -76,7 +66,7 @@ Version: 1.0.4
     color: #00A651 !important;
 }
 
-/* グラデーション背景 */
+
 .has-canmake-pink-gradient-background {
     background: linear-gradient(135deg, #E4007F 0%, #FFD6E7 100%) !important;
 }
