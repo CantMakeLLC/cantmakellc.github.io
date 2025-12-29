@@ -3,249 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Cosmetic Header - Bootstrap</title>
+    <title>Glow - Responsive Header</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-gold: #d4af37;
-            --brand-dark: #1a1a1a;
+            --header-bg: #ffffff;
+            --accent-color: #000000;
+            --marquee-bg: #f8f8f8;
+            --nav-height: 70px;
+            --header-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
+            padding-top: 110px; /* Offset for fixed header */
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            height: 200vh;
+            transition: padding-top var(--header-transition);
         }
 
-        .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Announcement Bar Animation */
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Marquee Logic with Collapse Animation */
         .marquee-wrapper {
-            background-color: var(--brand-dark);
-            color: white;
+            background: var(--marquee-bg);
             overflow: hidden;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            max-height: 100px;
+            opacity: 1;
+            transition: max-height var(--header-transition), opacity var(--header-transition), padding var(--header-transition);
+        }
+
+        /* Scrolled State for Marquee */
+        .header-scrolled .marquee-wrapper {
+            max-height: 0;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            opacity: 0;
+            border-bottom: none;
         }
 
         .marquee-content {
-            white-space: nowrap;
             display: inline-block;
-            animation: marquee-scroll 25s linear infinite;
+            animation: marquee 25s linear infinite;
         }
 
-        @keyframes marquee-scroll {
+        @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Header Transition */
-        header {
-            transition: transform 0.4s ease;
+        .tracking-widest { letter-spacing: 0.15em; font-size: 0.75rem; }
+
+        /* Navbar Styling */
+        #site-header {
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            transition: box-shadow var(--header-transition);
         }
 
-        .scrolled .marquee-wrapper {
-            height: 0;
-            opacity: 0;
+        .header-scrolled#site-header {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .main-nav {
-            background-color: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #eee;
-            padding: 1.25rem 0;
-            transition: all 0.3s ease;
+            background: var(--header-bg);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        /* Navigation Links Styling */
         .nav-link-custom {
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            color: var(--brand-dark) !important;
             text-decoration: none;
-            position: relative;
-            padding: 0.5rem 0;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
         }
 
-        .nav-link-custom::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--brand-gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link-custom:hover::after {
-            width: 100%;
-        }
+        .nav-link-custom:hover { opacity: 0.6; }
 
         .logo-link {
+            font-size: 1.8rem;
             text-decoration: none;
-            color: var(--brand-dark);
-            font-size: 2.5rem;
+            color: #000;
             font-weight: 700;
-            letter-spacing: -0.05em;
+            letter-spacing: 4px;
         }
 
-        .logo-dot {
-            color: var(--brand-gold);
-        }
+        .logo-dot { color: #d4a373; }
 
-        /* Icon Buttons */
-        .icon-link {
-            color: var(--brand-dark);
-            padding: 0.5rem;
-            transition: transform 0.2s ease;
-            display: inline-block;
-        }
-
-        .icon-link:hover {
-            transform: translateY(-2px);
-            color: var(--brand-gold);
-        }
-
+        .icon-link { color: #000; text-decoration: none; }
+        
         .cart-badge {
-            background-color: var(--brand-gold);
-            font-size: 0.7rem;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
             position: absolute;
-            top: 0;
-            right: -5px;
+            top: -5px;
+            right: -8px;
+            background: #000;
+            font-size: 0.6rem;
+            padding: 2px 5px;
+            border-radius: 50%;
         }
 
-        /* Hero Styling */
-        .hero-section {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 100px; /* Base spacer */
+        /* Mobile Adjustments */
+        .mobile-toggle {
+            border: none;
+            background: none;
+            padding: 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .logo-link { font-size: 1.4rem; letter-spacing: 2px; }
+            body { padding-top: 100px; }
+            .header-scrolled + main { padding-top: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header id="site-header" class="fixed-top">
-        <!-- Collapsible Upper Part: Marquee -->
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over $150</span>
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte collection</span>
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
-                <!-- Duplicate for loop -->
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over $150</span>
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte collection</span>
-                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
-            </div>
+<header id="site-header" class="fixed-top">
+    <!-- Collapsible Upper Part: Marquee -->
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over $150</span>
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte collection</span>
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over $150</span>
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte collection</span>
+            <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
         </div>
+    </div>
 
-        <!-- Sticky Lower Part: Navbar -->
-        <nav class="main-nav">
-            <div class="container-fluid px-lg-5">
-                <div class="row align-items-center">
-                    
-                    <!-- Left: Navigation -->
-                    <div class="col-4 d-none d-lg-flex gap-4">
+    <!-- Sticky Lower Part: Navbar -->
+    <nav class="main-nav">
+        <div class="container-fluid px-lg-5">
+            <div class="row align-items-center">
+
+                <!-- Mobile: Logo (order-1) | Desktop: Navigation -->
+                <div class="col-6 col-lg-4 order-1 order-lg-1 text-start text-lg-start">
+                    <!-- Desktop Links (Visible >= lg) -->
+                    <div class="d-none d-lg-flex gap-4">
                         <a href="#" class="nav-link-custom">Shop All</a>
                         <a href="#" class="nav-link-custom">Skincare</a>
                         <a href="#" class="nav-link-custom">Makeup</a>
                     </div>
-
-                    <!-- Center: Logo -->
-                    <div class="col-4 text-center">
+                    <!-- Mobile Logo (Visible < lg) -->
+                    <div class="d-lg-none">
                         <a href="#" class="logo-link serif">
                             GLOW<span class="logo-dot">.</span>
                         </a>
                     </div>
-
-                    <!-- Right: Icons & Info -->
-                    <div class="col-4 d-flex justify-content-end align-items-center gap-3">
-                        <a href="#" class="nav-link-custom d-none d-xl-inline-block me-3">Sustainability</a>
-                        
-                        <a href="#" class="icon-link" aria-label="Search">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </a>
-                        <a href="#" class="icon-link" aria-label="Account">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        </a>
-                        <a href="#" class="icon-link position-relative" aria-label="Cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                            <span class="cart-badge text-white">0</span>
-                        </a>
-                    </div>
-
                 </div>
+
+                <!-- Mobile: Empty/Spacer | Desktop: Logo (order-2) -->
+                <div class="col-lg-4 d-none d-lg-block order-lg-2 text-center">
+                    <a href="#" class="logo-link serif">
+                        GLOW<span class="logo-dot">.</span>
+                    </a>
+                </div>
+
+                <!-- Mobile: Icons + Toggle (order-3) | Desktop: Icons (order-3) -->
+                <div class="col-6 col-lg-4 order-3 order-lg-3 d-flex justify-content-end align-items-center gap-2 gap-md-3">
+                    <a href="#" class="nav-link-custom d-none d-xl-inline-block me-3">About</a>
+                    
+                    <a href="#" class="icon-link" aria-label="Search">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </a>
+                    
+                    <a href="#" class="icon-link position-relative" aria-label="Cart">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge text-white">0</span>
+                    </a>
+
+                    <!-- Mobile Hamburger (Visible < lg) -->
+                    <button class="mobile-toggle d-lg-none ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                </div>
+
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 p-5 rounded" style="background: rgba(0,0,0,0.3);">
-                        <h1 class="serif display-2 mb-4">Summer Radiance</h1>
-                        <p class="lead mb-5">Discover the beauty of clean, vegan skincare.</p>
-                        <a href="#" class="btn btn-outline-light rounded-0 px-5 py-3 text-uppercase tracking-widest">Shop the Collection</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title serif fw-bold" id="mobileMenuLabel">GLOW.</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="d-flex flex-column gap-4">
+            <a href="#" class="nav-link-custom fs-5">Shop All</a>
+            <a href="#" class="nav-link-custom fs-5">Skincare</a>
+            <a href="#" class="nav-link-custom fs-5">Makeup</a>
+            <hr>
+            <a href="#" class="nav-link-custom">About Us</a>
+            <a href="#" class="nav-link-custom">My Account</a>
+        </div>
+    </div>
+</div>
 
-        <section class="container py-5 mt-5">
-            <h2 class="serif text-center display-5 mb-5">Our Philosophy</h2>
-            <div class="row g-5 text-center">
-                <div class="col-md-4">
-                    <h3 class="h6 text-uppercase fw-bold tracking-widest mb-4">Cruelty Free</h3>
-                    <p class="text-muted">No animals were harmed in the making of our products. Ever.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="h6 text-uppercase fw-bold tracking-widest mb-4">Sustainable</h3>
-                    <p class="text-muted">Eco-friendly packaging designed to reduce waste and look beautiful.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="h6 text-uppercase fw-bold tracking-widest mb-4">Natural</h3>
-                    <p class="text-muted">Powerful botanical ingredients that deliver real results.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+<main class="container mt-5">
+    <h1>Content Area</h1>
+    <p>Scroll down to observe the header collapse. The announcement marquee will smoothly hide, and the navbar will maintain its fixed position at the top of the viewport.</p>
+    <div style="height: 2000px; background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%);"></div>
+</main>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
+<script>
+    /**
+     * Scroll Observer Implementation
+     * Handles the transition of the header state based on vertical scroll offset.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
         const header = document.getElementById('site-header');
+        const scrollThreshold = 50;
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+        function handleScroll() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > scrollThreshold) {
+                header.classList.add('header-scrolled');
             } else {
-                header.classList.remove('scrolled');
+                header.classList.remove('header-scrolled');
             }
-        });
-    </script>
+        }
+
+        // Optimized scroll listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Initial check in case page is loaded mid-scroll
+        handleScroll();
+    });
+</script>
 </body>
 </html>
