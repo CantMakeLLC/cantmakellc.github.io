@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     RevealManager.init();
     CartManager.init();
     FilterManager.init();
+    DetailManager.init();
 });
 
 
@@ -314,6 +315,46 @@ const LoaderManager = (() => {
                 originalOrder = Array.from(grid.querySelectorAll(`.${CONFIG.ITEM_CLASS}`));
 
                 select.addEventListener('change', (e) => applySort(e.target.value));
+            };
+
+            return { init };
+        })();
+
+        /**
+         * DETAIL MANAGER
+         * Description: Handles quantity logic and Add to Cart button feedback.
+         */
+        const DetailManager = (() => {
+            const UI = {
+                minus: document.getElementById('qty-minus'),
+                plus: document.getElementById('qty-plus'),
+                input: document.getElementById('qty-count'),
+                btn: document.getElementById('add-to-cart')
+            };
+
+            const updateQty = (delta) => {
+                let current = parseInt(UI.input.value);
+                let next = current + delta;
+                if (next >= 1) UI.input.value = next;
+            };
+
+            const init = () => {
+                if (!UI.btn) return;
+
+                UI.minus.addEventListener('click', () => updateQty(-1));
+                UI.plus.addEventListener('click', () => updateQty(1));
+
+                UI.btn.addEventListener('click', function() {
+                    const originalText = this.innerText;
+                    this.innerText = "Added to Bag";
+                    this.style.backgroundColor = "#28a745"; // Success Green
+                    
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.style.backgroundColor = "";
+                        UI.input.value = 1;
+                    }, 2000);
+                });
             };
 
             return { init };

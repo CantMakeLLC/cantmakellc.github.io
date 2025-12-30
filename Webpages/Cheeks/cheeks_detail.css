@@ -1,0 +1,99 @@
+/* --- FEATURE: PRODUCT DETAIL LAYOUT --- 
+           Description: Responsive layout for product imagery and purchase info.
+        */
+        .product-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+        }
+
+        .product-info-sticky {
+            position: sticky;
+            top: calc(var(--nav-height) + 40px);
+        }
+
+        /* Quantity Selector Styling */
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            margin-bottom: 1.5rem;
+        }
+
+        .qty-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 15px;
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .qty-btn:hover { opacity: 0.5; }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Add to Cart Button */
+        .btn-purchase {
+            width: 100%;
+            border-radius: 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-purchase:hover {
+            background-color: var(--btn-gold);
+        }
+
+        /* Collapsible Details (Accordion) */
+        .accordion-item {
+            background-color: transparent;
+            border-left: none;
+            border-right: none;
+            border-radius: 0 !important;
+        }
+
+        .accordion-button {
+            background-color: transparent !important;
+            color: var(--accent-color) !important;
+            padding: 1.25rem 0;
+            box-shadow: none !important;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .accordion-body {
+            padding: 0 0 1.25rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* --- REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }

@@ -47,6 +47,8 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="cheeks_detail.css">
+
 
 
 
@@ -102,7 +104,7 @@
                     <div class="col-5 col-lg-5 order-1 order-lg-1 text-start text-lg-start">
                         <div class="d-none d-lg-flex gap-4">
                             <a href="/Webpages/allitems.html" class="nav-link-custom">New Arrivals</a>
-                            <a href="#" class="nav-link-custom">Cheeks</a>
+                            <a href="/Webpages/Cheeks/cheeks_list.html" class="nav-link-custom">Cheeks</a>
                             <a href="/Webpages/Eyes/Menu.html" class="nav-link-custom">Eyes</a>
                             <a href="#" class="nav-link-custom">Lips</a>
                         </div>
@@ -182,7 +184,7 @@
         <div class="offcanvas-body">
             <div class="d-flex flex-column gap-4">
                 <a href="/Webpages/allitems.html" class="nav-link-custom fs-5">New Arrivals</a>
-                <a href="#" class="nav-link-custom fs-5">Cheeks</a>
+                <a href="/Webpages/Cheeks/cheeks_list.html" class="nav-link-custom fs-5">Cheeks</a>
                 <a href="#" class="nav-link-custom fs-5">Eyes</a>
                 <a href="#" class="nav-link-custom fs-5">Lips</a>
                 <hr>
@@ -192,92 +194,99 @@
         </div>
     </div>
 
-    <main class="container" style="padding-top: 80px;">
-        
-        <!-- Category Header & Filter Row -->
-        <div class="row align-items-end mb-5 reveal">
-            <div class="col-md-6">
-                <h6 class="text-uppercase tracking-widest small text-muted mb-2">Kyoto Essentials</h6>
-                <h1 class="serif display-4 fw-bold mb-0">The Cheeks Collection</h1>
+    <main class="container px-lg-5 py-5">
+        <div class="row g-5">
+            
+            <!-- Left Column: Image Gallery -->
+            <div class="col-lg-7 reveal">
+                <div class="product-gallery">
+                    <!-- Main Product Image -->
+                    <img src="/images/BG/banner5_mobile.png" 
+                         alt="Silk Cream Blush" class="img-fluid mb-4">
+                    
+                    <!-- Secondary Detail Image -->
+                    <img src="/images/products/Eyes/mirror.jpg" 
+                         alt="Product Texture" class="img-fluid">
+                </div>
             </div>
-            <div class="col-md-6 text-md-end mt-4 mt-md-0">
-                <label class="small text-uppercase tracking-wider d-block mb-2">Sort By</label>
-                <select class="form-select filter-select d-inline-block" id="price-filter">
-                    <option value="featured" style="background-color: grey;">Featured</option>
-                    <option value="low" style="background-color: grey;">Price: Low to High</option>
-                    <option value="high" style="background-color: grey;">Price: High to Low</option>
-                </select>
+
+            <!-- Right Column: Product Information -->
+            <div class="col-lg-5 reveal">
+                <div class="product-info-sticky">
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb small text-uppercase fw-bold tracking-wider">
+                            <li class="breadcrumb-item"><a href="/Webpages/Cheeks/cheeks_list.html" class="text-decoration-none text-muted">Cheeks</a></li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="serif display-5 fw-bold mb-2">Translucent</h1>
+                    <p class="fs-4 fw-light mb-4">¥650</p>
+                    
+                    <div class="mb-4">
+                        <p class="text-muted small">
+                            A quartet of buttery shadows inspired by the night sky over Gion. Build from a subtle wash of color to a dramatic evening look.
+                        </p>
+                    </div>
+
+                    <!-- Purchase Actions -->
+                    <div class="purchase-controls py-4 border-top">
+                        <label class="small text-uppercase fw-bold tracking-widest mb-2 d-block">Quantity</label>
+                        <div class="qty-selector">
+                            <button class="qty-btn" id="qty-minus"><i class="bi bi-dash"></i></button>
+                            <input type="number" value="1" min="1" class="qty-input" id="qty-count" readonly>
+                            <button class="qty-btn" id="qty-plus"><i class="bi bi-plus"></i></button>
+                        </div>
+                        
+                        <button class="btn-purchase" id="add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                    <!-- Product Specifics (Accordion) -->
+                    <div class="accordion accordion-flush mt-2" id="productAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#descOne">
+                                    Product Highlights
+                                </button>
+                            </h2>
+                            <div id="descOne" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                    • Enriched with Tsubaki Oil<br>
+                                    • Fragrance-free & Vegan<br>
+                                    • Made in Japan
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#descTwo">
+                                    How to Use
+                                </button>
+                            </h2>
+                            <div id="descTwo" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                    Apply the eyeshadow evenly across the eyelid using a brush or fingertip, starting from the lash line and blending upward for a smooth finish. 
+                                    For added depth, layer darker shades at the outer corners and softly blend to create a seamless look.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#descThree">
+                                    Shipping & Returns
+                                </button>
+                            </h2>
+                            <div id="descThree" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                    Complimentary shipping on orders over ¥15000. Returns accepted within 14 days of receipt.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- 4x3 Product Grid (12 Items) -->
-        <div class="row g-4" id="product-grid">
-            <!-- Product Item 1 (New Arrival) -->
-            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
-                <a href="/Webpages/Cheeks/cheeks_detail.html" class="text-decoration-none">
-                <div class="img-container">
-                    <span class="badge-new">New Arrival</span>
-                    <img src="/images/BG/banner3_mobile.png" alt="Kyoto Rose">
-                    <div class="cart-overlay">
-                        <button class="btn btn-add-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-1">Kyoto Rose</h6>
-                <p class="small text-muted mb-0">¥550</p>
-                </a>
-            </div>
-
-            <!-- Product Item 2 -->
-            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
-                <div class="img-container">
-                    <img src="/images/products/Cheeks/chk1.jpg" alt="Product">
-                    <div class="cart-overlay">
-                        <button class="btn btn-add-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-1">Translucent Powder</h6>
-                <p class="small text-muted mb-0">¥860</p>
-            </div>
-
-            <!-- Product Item 3 -->
-            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
-                <div class="img-container">
-                    <img src="/images/products/Cheeks/chk2.jpg" alt="Product">
-                    <div class="cart-overlay">
-                        <button class="btn btn-add-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-1">Hydrating Tint</h6>
-                <p class="small text-muted mb-0">¥560</p>
-            </div>
-
-            <!-- Product Item 4 -->
-            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
-                <div class="img-container">
-                    <img src="/images/products/Cheeks/chk3.jpg" alt="Product">
-                    <div class="cart-overlay">
-                        <button class="btn btn-add-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-1">Velvet Matte </h6>
-                <p class="small text-muted mb-0">¥660</p>
-            </div>
-
-            <!-- Product Item 5 -->
-            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
-                <div class="img-container">
-                    <img src="/images/products/Cheeks/chk4.jpg" alt="Product">
-                    <div class="cart-overlay">
-                        <button class="btn btn-add-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <h6 class="fw-bold mb-1">Precision Powder</h6>
-                <p class="small text-muted mb-0">¥440</p>
-            </div>
-            </div>
-
-            
-
     </main>
 
     <footer class="cantmake-footer" style="background: var(--bg-gradient);">
