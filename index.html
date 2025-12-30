@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 
 <head>
     <!--Meta porperties-->
@@ -38,9 +38,17 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="/css/common.css">
+
+
 
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -70,7 +78,7 @@
                 <div class="row align-items-center">
 
                     <!-- Left: Navigation (Desktop) / Logo (Mobile) -->
-                    <div class="col-6 col-lg-4 order-1 order-lg-1 text-start text-lg-start">
+                    <div class="col-5 col-lg-5 order-1 order-lg-1 text-start text-lg-start">
                         <div class="d-none d-lg-flex gap-4">
                             <a href="#" class="nav-link-custom">✨New arrival</a>
                             <a href="#" class="nav-link-custom">Cheeks</a>
@@ -78,23 +86,28 @@
                             <a href="#" class="nav-link-custom">Lips</a>
                         </div>
                         <div class="d-lg-none">
-                            <a href="index.html" class="logo-link serif">
-                                CANTMAKE<span class="logo-dot">.</span>
+                            <a href="index.html">
+                                <img src="images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:100px;">
                             </a>
                         </div>
                     </div>
 
                     <!-- Center: Logo (Desktop Only) -->
-                    <div class="col-lg-4 d-none d-lg-block order-lg-2 text-center">
-                        <a href="index.html" class="logo-link serif">
-                            CANTMAKE<span class="logo-dot">.</span>
+                    <div class="col-lg-4 d-none d-lg-block order-lg-2 d-flex justify-content-center align-items-center">
+                        <a href="index.html">
+                            <img src="images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:180px;">
                         </a>
                     </div>
 
                     <!-- Right: Icons + Toggle -->
-                    <div
-                        class="col-6 col-lg-4 order-3 order-lg-3 d-flex justify-content-end align-items-center gap-3 gap-md-4">
+                    <div class="col-7 col-lg-3 order-3 order-lg-3 d-flex justify-content-end align-items-center gap-3 gap-md-4">
                         <a href="#" class="nav-link-custom d-none d-xl-inline-block me-3">About</a>
+
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" class="btn btn-link p-0 text-reset border-0 shadow-none">
+                            <i class="bi bi-sun sun-icon fs-5"></i>
+                            <i class="bi bi-moon-stars moon-icon fs-5"></i>
+                        </button>
 
                         <!--Search icon-->
                         <a href="#" class="icon-link" aria-label="Search">
@@ -160,101 +173,269 @@
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <section class="container mt-5 py-5 text-center">
-            <h2 class="serif display-4 mb-4">Timeless Beauty.</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 600px;">Experience the fusion of science and nature with
-                our curated collections designed to illuminate your natural radiance.</p>
-        </section>
 
-        
+        <!-- 1. CAROUSEL SLIDER -->
+        <section id="hero-carousel" class="main-carousel carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <!--item 1-->
+                <div class="carousel-item active">
+                    <!-- Placeholder color for actual images -->
+                    <div class="w-100 h-100 d-flex align-items-center" style="background: #ece9e6;">
+                        <div class="container px-lg-5">
+                            <div class="carousel-caption d-none d-md-block text-dark">
+                                <h2 class="serif display-2 fw-bold mb-3">The Velvet <br>Collection</h2>
+                                <p class="lead mb-4">Softness defined. Discover our latest matte lipsticks.</p>
+                                <a href="#"
+                                    class="btn btn-dark px-4 py-2 rounded-0 text-uppercase tracking-widest small">Shop
+                                    Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--item 2-->
+                <div class="carousel-item">
+                    <div class="w-100 h-100 d-flex align-items-center" style="background: #f1f2f6;">
+                        <div class="container px-lg-5">
+                            <div class="carousel-caption d-none d-md-block text-dark">
+                                <h2 class="serif display-2 fw-bold mb-3">Kyoto <br>Radiance</h2>
+                                <p class="lead mb-4">Glow from within with our serum-infused foundation.</p>
+                                <a href="#"
+                                    class="btn btn-dark px-4 py-2 rounded-0 text-uppercase tracking-widest small">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--item 3-->
+                <div class="carousel-item">
+                    <div class="w-100 h-100 d-flex align-items-center" style="background: #f1f2f6;">
+                        <div class="container px-lg-5">
+                            <div class="carousel-caption d-none d-md-block text-dark">
+                                <h2 class="serif display-2 fw-bold mb-3">Kyoto <br>Radiance</h2>
+                                <p class="lead mb-4">Glow from within with our serum-infused foundation.</p>
+                                <a href="#"
+                                    class="btn btn-dark px-4 py-2 rounded-0 text-uppercase tracking-widest small">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--item 4-->
+                <div class="carousel-item">
+                    <div class="w-100 h-100 d-flex align-items-center" style="background: #f1f2f6;">
+                        <div class="container px-lg-5">
+                            <div class="carousel-caption d-none d-md-block text-dark">
+                                <h2 class="serif display-2 fw-bold mb-3">Kyoto <br>Radiance</h2>
+                                <p class="lead mb-4">Glow from within with our serum-infused foundation.</p>
+                                <a href="#"
+                                    class="btn btn-dark px-4 py-2 rounded-0 text-uppercase tracking-widest small">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </section>
     
-        <!-- Product Carousel Section -->
-        <section class="product-carousel-section pb-5">
-            <div class="container-fluid px-lg-5">
-                <div class="d-flex justify-content-between align-items-end mb-4 px-3">
-                    <h3 class="serif h2 mb-0">Featured Arrivals</h3>
-                    <a href="#" class="nav-link-custom border-bottom border-dark">View All</a>
+        <!-- 2. PRODUCT LINE UP -->
+        <section class="py-5">
+            <div class="container px-lg-5">
+                <div class="d-flex justify-content-between align-items-end mb-5">
+                    <div>
+                        <h6 class="text-uppercase tracking-widest small text-muted mb-2">Curated for you</h6>
+                        <h2 class="serif display-5 fw-bold">Best Sellers</h2>
+                    </div>
+                    <a href="#"
+                        class="text-dark text-decoration-none border-bottom border-dark pb-1 small text-uppercase fw-bold">View
+                        All</a>
                 </div>
     
-                <div class="product-carousel-wrapper">
-                    <div class="product-carousel">
-                        
-                        <!-- Product Slot 1 -->
-                        <div class="product-slot">
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <img src="images/logo_banner.svg" alt="Velvet Matte Lipstick" class="product-img primary">
-                                    <img src="images/logo_icon.svg" alt="Velvet Matte Lipstick - nd" class="product-img secondary">
-                                    <span class="badge-custom">New</span>
-                                </div>
-                                <div class="product-info pt-3">
-                                    <h4 class="product-title">Velvet Matte Lipstick</h4>
-                                    <p class="product-price">$32.00</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row g-4">
 
-                        <!-- Product Slot 2 -->
-                        <div class="product-slot">
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <img src="images/products/Cheeks/elsa_daki.png" alt="Radiant Glow Serum" class="product-img primary">
-                                    <img src="images/products/Cheeks/kate_daki.png" alt="Radiant Glow Serum - nd" class="product-img secondary">
-                                </div>
-                                <div class="product-info pt-3">
-                                    <h4 class="product-title">Radiant Glow Serum</h4>
-                                    <p class="product-price">$58.00</p>
-                                </div>
+                    <!-- Product Item 1 -->
+                    <div class="col-6 col-md-3">
+                        <div class="product-card h-100">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&w=500&q=80"
+                                    class="img-fluid mb-3 w-100" alt="Cream Blush">
+                                <span
+                                    class="position-absolute top-0 start-0 m-2 badge bg-dark rounded-0 fw-light small">New</span>
                             </div>
+                            <h6 class="fw-bold mb-1">Creamy Cheek Glow</h6>
+                            <p class="small text-muted mb-2">Kyoto Rose</p>
+                            <p class="fw-bold">$28.00</p>
                         </div>
+                    </div>
 
-                        <!-- Product Slot 3 -->
-                        <div class="product-slot">
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <img src="images/products/Cheeks/kate_daki.png" alt="Hydrating Mist" class="product-img primary">
-                                    <img src="images/products/Cheeks/maria_daki.png" alt="Hydrating Mist - nd" class="product-img secondary">
-                                </div>
-                                <div class="product-info pt-3">
-                                    <h4 class="product-title">Hydrating Mist</h4>
-                                    <p class="product-price">$24.00</p>
-                                </div>
-                            </div>
+                    <!-- Product Item 2 -->
+                    <div class="col-6 col-md-3">
+                        <div class="product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=500&q=80"
+                                class="img-fluid mb-3 w-100" alt="Silk Powder">
+                            <h6 class="fw-bold mb-1">Silk Finish Powder</h6>
+                            <p class="small text-muted mb-2">Translucent</p>
+                            <p class="fw-bold">$42.00</p>
                         </div>
+                    </div>
 
-                        <!-- Product Slot 4 -->
-                        <div class="product-slot">
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <div class="placeholder-img" style="background-color: #f0f0f0;"></div>
-                                </div>
-                                <div class="product-info pt-3">
-                                    <h4 class="product-title">Sculpting Bronzer</h4>
-                                    <p class="product-price">$45.00</p>
-                                </div>
-                            </div>
+                    <!-- Product Item 3 -->
+                    <div class="col-6 col-md-3">
+                        <div class="product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=500&q=80"
+                                class="img-fluid mb-3 w-100" alt="Lip Balm">
+                            <h6 class="fw-bold mb-1">Hydrating Lip Tint</h6>
+                            <p class="small text-muted mb-2">Morning Mist</p>
+                            <p class="fw-bold">$24.00</p>
                         </div>
-                        
-                        <!-- Product Slot 5 -->
-                        <div class="product-slot">
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <div class="placeholder-img" style="background-color: #e8e8e8;"></div>
-                                </div>
-                                <div class="product-info pt-3">
-                                    <h4 class="product-title">Defining Eyeliner</h4>
-                                    <p class="product-price">$18.00</p>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+    
+        <!-- 3. FOLLOW US / INSTAGRAM -->
+        <section class="py-5 border-top border-bottom" style="background: var(--marquee-bg);">
+            <div class="container px-lg-5">
+                <div class="text-center mb-5">
+                    <h2 class="serif display-6 fw-bold mb-3">Follow our Journey</h2>
+                    <a href="https://instagram.com"
+                        class="text-dark text-decoration-none small text-uppercase tracking-widest fw-bold">
+                        <i class="bi bi-instagram me-2"></i>@cantmake_kyoto
+                    </a>
+                </div>
+    
+                <div class="insta-grid">
+                    <div class="insta-item">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&w=400&q=80"
+                            alt="Social 1">
+                    </div>
+                    <div class="insta-item">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=80"
+                            alt="Social 2">
+                    </div>
+                    <div class="insta-item">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80"
+                            alt="Social 3">
+                    </div>
+                    <div class="insta-item">
+                        <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=400&q=80"
+                            alt="Social 4">
                     </div>
                 </div>
             </div>
         </section>
     
-        <div style="height: 1000px; background: linear-gradient(180deg, #fff 0%, #f4f4f4 100%);"></div>
     </main>
+
+    <footer class="cantmake-footer">
+        <div class="container-fluid px-lg-5">
+    
+            <!-- Main Footer Navigation -->
+            <div class="footer-top-row pt-5 pb-4">
+                <div class="row gy-5">
+    
+                    <!-- Branding & Philosophy -->
+                    <div class="col-12 col-lg-3">
+                        <a href="#" class="footer-logo serif text-dark text-decoration-none d-block mb-3">
+                            <img src="images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:250px;">
+                        </a>
+                        <p class="footer-brand-text small text-muted pe-lg-5">
+                            Delivering that special sparkle to your day
+                        </p>
+                        <div class="footer-social-cluster mt-4 d-flex gap-3">
+                            <a href="#" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--facebook icon (somehow)-->
+                                    <path
+                                        d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.49 0-1.953.925-1.953 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z"/>
+                                </svg></a>
+                            <a href="#" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--Bird icon-->
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg></a>
+                        </div>
+                    </div>
+    
+                    <!-- Column 2: Products -->
+                    <div class="col-6 col-md-3 col-lg-3 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Products</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="#" class="footer-link">New Arrivals</a></li>
+                            <li><a href="#" class="footer-link">Cheek Makeup</a></li>
+                            <li><a href="#" class="footer-link">Eye Makeup</a></li>
+                            <li><a href="#" class="footer-link">Lip Products</a></li>
+                            
+                        </ul>
+                    </div>
+    
+                    <!-- Column 3: Brand Story -->
+                    <div class="col-6 col-md-3 col-lg-3 text-md-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Brand Story</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="#" class="footer-link">Our Concept</a></li>
+                            <li><a href="#" class="footer-link">History</a></li>
+                            <li><a href="#" class="footer-link">Sustainability</a></li>
+                            <li><a href="#" class="footer-link">News & Press</a></li>
+                        </ul>
+                    </div>
+    
+    
+                    <!-- Column 5: Support -->
+                    <div class="col-6 col-md-3 col-lg-3 text-md-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Inquiries</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="mailto:cantmakellc@protonmail.com?subject=Products Inquiry&body=To whom it may concern" class="footer-link">Customer Service</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                            <li><a href="#" class="footer-link">Shop Locator</a></li>
+                        </ul>
+                        <div class="contact-cta mt-4 text-md-end">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Copyright & Bottom Nav -->
+            <div class="footer-bottom-row py-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 text-center text-md-start">
+                        <small class="text-muted tracking-widest text-uppercase" style="font-size: 0.65rem;">© CANTMAKE KYOTO. All Rights Reserved.</small>
+                    </div>
+                    <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mx-2"><a href="#" class="footer-link-small">Privacy Policy</a></li>
+                            <li class="list-inline-item mx-2"><a href="#" class="footer-link-small">Terms of Service</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    </footer>
+
+
+
+
+
+
 
 
     <!-- Bootstrap 5 JS Bundle -->
