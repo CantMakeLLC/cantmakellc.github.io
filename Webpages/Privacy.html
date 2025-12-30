@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <!--Meta porperties-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="\images\favicon.ico\favicon.ico" type="image/svg+xml">
+    <title>CAN'TMAKE - Special makeup for that special occasion</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About us - the mission and vision of CANTMAKE">
+    <meta property="og:url" content="https://www.cantmakellc.github.io">
+    <meta property="og:image" content="\images\favicon.ico\favicon.ico">
+    <meta property="og:description" content="CAN'TMAKE is a makeup brand where you can trust! ">
+    <meta property="og:site_name" content="CAN'TMAKE">
+
+    <!--Favicon-->
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon.ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/common.css">
+
+
+
+    <!--Script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4"></script>
+
+</head>
+
+<body>
+
+    <header id="site-header" class="fixed-top">
+        <!-- Collapsible Upper Part: Marquee -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over
+                    $150</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte
+                    collection</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over
+                    $150</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the velvet matte
+                    collection</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
+            </div>
+        </div>
+
+        <!-- Sticky Lower Part: Navbar -->
+        <nav class="main-nav">
+
+            <!-- Search Overlay Container -->
+            <div id="search-container" class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="search-input" class="search-field" placeholder="Search our collection...">
+                    <button id="search-submit" class="search-submit-btn" aria-label="Perform search">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button id="search-close" class="search-close-btn" aria-label="Close search">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="container-fluid px-lg-5">
+                <div class="row align-items-center">
+
+                    <!-- Left: Navigation (Desktop) / Logo (Mobile) -->
+                    <div class="col-5 col-lg-5 order-1 order-lg-1 text-start text-lg-start">
+                        <div class="d-none d-lg-flex gap-4">
+                            <a href="/Webpages/allitems.html" class="nav-link-custom">Shop all</a>
+                            <a href="#" class="nav-link-custom">Cheeks</a>
+                            <a href="#" class="nav-link-custom">Eyes</a>
+                            <a href="#" class="nav-link-custom">Lips</a>
+                        </div>
+                        <div class="d-lg-none">
+                            <a href="/index.html">
+                                <img src="/images/logo_banner.png" alt="CANTMAKE" class="img-fluid" >
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Center: Logo (Desktop Only) -->
+                    <div class="col-lg-4 d-none d-lg-block order-lg-2 d-flex justify-content-center align-items-center">
+                        <a href="/index.html">
+                            <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid"
+                                style="max-width:180px;">
+                        </a>
+                    </div>
+
+                    <!-- Right: Icons + Toggle -->
+                    <div
+                        class="col-7 col-lg-3 order-3 order-lg-3 d-flex justify-content-end align-items-center gap-3 gap-md-4">
+                        <a href="/Webpages/about.html" class="nav-link-custom d-none d-xl-inline-block me-3">About
+                            us</a>
+
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" class="btn btn-link p-0 text-reset border-0 shadow-none">
+                            <i class="bi bi-sun sun-icon fs-5"></i>
+                            <i class="bi bi-moon-stars moon-icon fs-5"></i>
+                        </button>
+
+                        <!--Search icon-->
+                        <a href="#" class="icon-link position-relative" id="search-trigger" aria-label="Search">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </a>
+
+                        <!--Cart icon-->
+                        <a href="#" class="icon-link position-relative" aria-label="Cart">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            <span class="cart-badge text-white">0</span>
+                        </a>
+
+                        <!-- Account Icon -->
+                        <a href="#" class="icon-link" aria-label="Account">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </a>
+
+                        <button class="mobile-toggle d-lg-none ms-2" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title serif fw-bold" id="mobileMenuLabel">CANTMAKE.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-4">
+                <a href="/Webpages/allitems.html" class="nav-link-custom fs-5">Shop all</a>
+                <a href="#" class="nav-link-custom fs-5">Cheeks</a>
+                <a href="#" class="nav-link-custom fs-5">Eyes</a>
+                <a href="#" class="nav-link-custom fs-5">Lips</a>
+                <hr>
+                <a href="/Webpages/about.html" class="nav-link-custom">About Us</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="policy-hero bg-light">
+            <div class="container px-lg-5 text-center">
+                <h1 class="serif display-3 fw-bold mb-3">Privacy Policy</h1>
+                <p class="text-muted small text-uppercase tracking-widest">Effective Date: December 30, 2025</p>
+            </div>
+        </section>
+    
+        <section class="py-5 policy-body">
+            <div class="container px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+    
+                        <div class="policy-section">
+                            <h4>1. Introduction</h4>
+                            <p>This Privacy Policy describes how **CAN'TMAKE LLC** ("Company", "we", "us", or "our"),
+                                headquartered in **Kyoto, Japan**, collects, uses, and shares your personal information when
+                                you visit our website or interact with our services. By using our services, you agree to the
+                                collection and use of information in accordance with this policy.</p>
+                        </div>
+    
+                        <div class="policy-section">
+                            <h4>2. Information We Collect</h4>
+                            <p>We collect various types of information to provide and improve our service to you:</p>
+                            <ul>
+                                <li><strong>Personal Identification Information:</strong> Name, email address, phone number,
+                                    and shipping address when you place an order.</li>
+                                <li><strong>Usage Data:</strong> Information on how the service is accessed and used,
+                                    including IP address, browser type, and time spent on pages.</li>
+                                <li><strong>Cookies:</strong> Small files stored on your device to enhance browsing
+                                    experience and remember preferences.</li>
+                            </ul>
+                        </div>
+    
+                        <div class="policy-section">
+                            <h4>3. Data Processing & Storage</h4>
+                            <p>Your information is processed and stored at our operating offices in **Kyoto, Japan**, and in
+                                any other places where the parties involved in the processing are located. It means that
+                                your information may be transferred to—and maintained on—computers located outside of your
+                                state or country where data protection laws may differ.</p>
+                        </div>
+    
+                        <div class="policy-section">
+                            <h4>4. Disclosure of Data</h4>
+                            <p>We may disclose your personal information in the following situations:</p>
+                            <ul>
+                                <li>To comply with a legal obligation or request from Japanese authorities.</li>
+                                <li>To protect and defend the rights or property of CAN'TMAKE LLC.</li>
+                                <li>To prevent or investigate possible wrongdoing in connection with the Service.</li>
+                            </ul>
+                        </div>
+    
+                        <div class="policy-section">
+                            <h4>5. Your Rights</h4>
+                            <p>Under certain circumstances, you have rights under data protection laws in relation to your
+                                personal data, including the right to request access, correction, erasure, or restriction of
+                                your personal data. To exercise these rights, please contact our Kyoto headquarters
+                                directly.</p>
+                        </div>
+    
+                        <div class="policy-section">
+                            <h4>6. Contact Us</h4>
+                            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                            <p class="mb-0"><strong>CAN'TMAKE LLC</strong></p>
+                            <p class="mb-0">Kyoto, Japan</p>
+                            <p>Email: privacy@cantmakekyoto.com</p>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <footer class="cantmake-footer">
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <div class="container-fluid px-lg-5">
+
+            <!-- Main Footer Navigation -->
+            <div class="footer-top-row pt-5 pb-4">
+                <div class="row gy-5">
+
+                    <!-- Branding & Philosophy -->
+                    <div class="col-12 col-lg-3">
+                        <a href="#" class="footer-logo serif text-dark text-decoration-none d-block mb-3">
+                            <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:250px;">
+                        </a>
+                        <p class="footer-brand-text small text-muted pe-lg-5">
+                            Delivering that special sparkle to your day
+                        </p>
+                        <div class="footer-social-cluster mt-4 d-flex gap-3">
+                            <a href="#" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--facebook icon (somehow)-->
+                                    <path
+                                        d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.49 0-1.953.925-1.953 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z" />
+                                </svg></a>
+                            <a href="#" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--Bird icon-->
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Products -->
+                    <div class="col-6 col-md-3 col-lg-3 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Products</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="#" class="footer-link">New Arrivals</a></li>
+                            <li><a href="#" class="footer-link">Cheek Makeup</a></li>
+                            <li><a href="#" class="footer-link">Eye Makeup</a></li>
+                            <li><a href="#" class="footer-link">Lip Products</a></li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Brand Story -->
+                    <div class="col-6 col-md-3 col-lg-3 text-md-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Brand Story</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="#" class="footer-link">Our Concept</a></li>
+                            <li><a href="#" class="footer-link">History</a></li>
+                            <li><a href="#" class="footer-link">Sustainability</a></li>
+                            <li><a href="#" class="footer-link">News & Press</a></li>
+                        </ul>
+                    </div>
+
+
+                    <!-- Column 5: Support -->
+                    <div class="col-6 col-md-3 col-lg-3 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Inquiries</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="mailto:cantmakellc@protonmail.com?subject=Products Inquiry&body=To whom it may concern"
+                                    class="footer-link">Customer Service</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                            <li><a href="#" class="footer-link">Shop Locator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Bottom Nav -->
+            <div class="footer-bottom-row py-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 text-center text-md-start">
+                        <small class="text-muted tracking-widest text-uppercase" style="font-size: 0.65rem;">© CANTMAKE
+                            KYOTO. All Rights Reserved.</small>
+                    </div>
+                    <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mx-2"><a href="#" class="footer-link-small">Privacy Policy</a>
+                            </li>
+                            <li class="list-inline-item mx-2"><a href="#" class="footer-link-small">Terms of Service</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Logic -->
+    <script src="/js/add_as_we_go.js"></script>
+
+    
+</body>
+
+</html>
