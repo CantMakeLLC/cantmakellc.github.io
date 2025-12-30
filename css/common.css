@@ -242,7 +242,113 @@ body {
     transform: scale(1.1);
 }
 
-.lineup {
-    background: url("/images/BG/ttl-kazari.png") center / auto 100% no-repeat;
-    min-height: 120px;
+
+/*Back to top*/
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgb(255, 0, 200); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
 }
+
+#myBtn:hover {
+  background-color: #3f3f3f; /* Add a dark-grey background on hover */
+}
+
+
+/* search icon */
+/* --- NEW FEATURE: NAV SEARCH INTERFACE ---
+           Description: Handles the appearance and animation of the searchable field.
+           The search bar overlays the navigation area when active.
+        */
+        .search-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--footer-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .search-input-group {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .search-field {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 10px 40px 10px 0;
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-field::placeholder {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        /* Icon inside the search field on the right */
+        .search-submit-btn {
+            position: absolute;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 5px;
+            transition: opacity 0.2s;
+        }
+
+        .search-submit-btn:hover {
+            opacity: 0.6;
+        }
+
+        /* Close button for search overlay */
+        .search-close-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .search-container { padding: 0 15px; }
+            .search-field { font-size: 1rem; }
+        }
