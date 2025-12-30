@@ -168,10 +168,13 @@ body {
 
 /* --- Carousel Adjustments --- */
 .main-carousel .carousel-item {
-    height: 60vh;
+    height: 80vh;
     min-height: 400px;
     background-color: #f4f4f4;
 }
+
+
+
 
 .carousel-caption {
     bottom: 20%;
@@ -496,6 +499,7 @@ body {
 
         /* place carousel indicators visually below the slides */
 .main-carousel .carousel-indicators {
+    
     position: static !important;
     margin-top: 1rem;
     display: flex;
@@ -506,7 +510,7 @@ body {
 }
 
 .main-carousel .carousel-indicators [data-bs-target] {
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
     border: none;
     opacity: 1;
     display: inline-block;
@@ -516,8 +520,12 @@ body {
     transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
+[data-bs-theme="dark"] .main-carousel .carousel-indicators [data-bs-target] {
+    background: rgba(255, 255, 255, 0.25);
+}
+
 .main-carousel .carousel-indicators .active {
-    background: var(--accent-color);
+    background: var(--accent-color) !important;
     transform: scaleX(1.15);
 }
 
