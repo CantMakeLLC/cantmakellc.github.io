@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // You can also initialize other modules here
     ThemeManager.init();
     ScrollManager.init();
+    LoaderManager.init();
 });
 
 
@@ -188,4 +189,27 @@ const SearchManager = (() => {
   return { init, toggle, executeSearch };
 })();
 
+const LoaderManager = (() => {
+            const CONFIG = {
+                LOADER_ID: 'preloader',
+                HIDDEN_CLASS: 'loader-hidden',
+                DISPLAY_TIME: 3000
+            };
 
+            const hide = () => {
+                const preloader = document.getElementById(CONFIG.LOADER_ID);
+                if (preloader) {
+                    preloader.classList.add(CONFIG.HIDDEN_CLASS);
+                }
+            };
+
+            const init = () => {
+                /**
+                 * window.onload ensures we wait for all images and resources.
+                 * If the page is already loaded, hide immediately.
+                 */
+                 setTimeout(hide, CONFIG.DISPLAY_TIME);
+            };
+
+            return { init };
+        })();
