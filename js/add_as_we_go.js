@@ -10,7 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
     CartManager.init();
     FilterManager.init();
     DetailManager.init();
+    CartPageManager.init();
+    CartUI.init();
+
+    /**
+             * Safety Sync: Explicitly trigger a badge update from index.html 
+             * to ensure storage and UI are perfectly aligned on home load.
+             */
+            if (typeof CartUI !== 'undefined') {
+                CartUI.updateBadge();
+            }
 });
+
+
+
+
 
 
 /**
@@ -239,13 +253,30 @@ const LoaderManager = (() => {
         })();
 
         /**
-         * CART INTERACTION MANAGER
-         * Description: Handles the "Add to Cart" button feedback.
+         * MODULAR CART MANAGER (Integration)
+         * Description: Listens for clicks on Add to Cart buttons, 
+         * extracts product metadata from HTML, and saves to CartStore.
          */
         const CartManager = (() => {
             const init = () => {
                 document.querySelectorAll('.btn-add-cart').forEach(btn => {
                     btn.addEventListener('click', function() {
+                        // 1. Traverse up to find the data container
+                        const itemContainer = this.closest('.product-item');
+                        
+                        // 2. Extract metadata
+                        const product = {
+                            id: itemContainer.dataset.id,
+                            name: itemContainer.dataset.name,
+                            price: parseFloat(itemContainer.dataset.price),
+                            thumb: itemContainer.dataset.thumb,
+                            qty: 1
+                        };
+
+                        // 3. Save to persistent storage (defined in cart_manager.js)
+                        CartStore.add(product);
+
+                        // 4. UI Feedback
                         const originalText = this.innerText;
                         this.innerText = "Added!";
                         this.style.backgroundColor = "#28a745"; // Success Green
@@ -253,7 +284,7 @@ const LoaderManager = (() => {
                         setTimeout(() => {
                             this.innerText = originalText;
                             this.style.backgroundColor = "";
-                        }, 2000);
+                        }, 1500);
                     });
                 });
             };
@@ -359,3 +390,234 @@ const LoaderManager = (() => {
 
             return { init };
         })();
+
+        /**
+         * UPDATED CART PAGE MANAGER
+         * Description: Now integrates with CartStore (localStorage) to render 
+         * and update the cart dynamically.
+         */
+        const CartPageManager = (() => {
+            const CONFIG = {
+                VAT_RATE: 0.10,
+                CONTAINER_ID: 'cart-items-container',
+                EMPTY_MSG_ID: 'cart-empty'
+            };
+
+            const UI = {
+                subtotal: document.getElementById('subtotal-val'),
+                vat: document.getElementById('vat-val'),
+                total: document.getElementById('total-val'),
+                container: document.getElementById(CONFIG.CONTAINER_ID),
+                emptyState: document.getElementById(CONFIG.EMPTY_MSG_ID)
+            };
+
+            const formatCurrency = (num) => `¥${num.toFixed(2)}`;
+
+            /**
+             * Renders the HTML for each product in storage.
+             */
+            const renderItems = () => {
+                const items = CartStore.getItems();
+                
+                if (items.length === 0) {
+                    UI.container.innerHTML = "";
+                    UI.container.classList.add('d-none');
+                    UI.emptyState.classList.remove('d-none');
+                    updateSummaries(0);
+                    return;
+                }
+
+                UI.container.classList.remove('d-none');
+                UI.emptyState.classList.add('d-none');
+
+                UI.container.innerHTML = items.map(item => `
+                    <div class="cart-row py-4 border-bottom d-flex align-items-center justify-content-between" data-id="${item.id}">
+                        <div class="d-flex align-items-center gap-4">
+                            <img src="${item.thumb}" alt="${item.name}" class="cart-item-img">
+                            <div>
+                                <h6 class="fw-bold mb-1">${item.name}</h6>
+                                <p class="small text-muted mb-0">${item.variant || ''}</p>
+                                <button class="btn btn-link p-0 text-muted small text-decoration-none mt-2 btn-remove">Remove</button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-5">
+                            <div class="qty-control">
+                                <button class="qty-btn btn-minus"><i class="bi bi-dash"></i></button>
+                                <input type="number" value="${item.qty}" class="qty-input" readonly>
+                                <button class="qty-btn btn-plus"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <p class="fw-bold mb-0">¥${(item.price * item.qty).toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                attachEvents();
+                calculateTotalValue(items);
+            };
+
+            const updateSummaries = (subtotal) => {
+                const vat = subtotal * CONFIG.VAT_RATE;
+                const total = subtotal + vat;
+                UI.subtotal.innerText = formatCurrency(subtotal);
+                UI.vat.innerText = formatCurrency(vat);
+                UI.total.innerText = formatCurrency(total);
+            };
+
+            const calculateTotalValue = (items) => {
+                const subtotal = items.reduce((sum, i) => sum + (i.price * i.qty), 0);
+                updateSummaries(subtotal);
+            };
+
+            const attachEvents = () => {
+                UI.container.querySelectorAll('.cart-row').forEach(row => {
+                    const id = row.dataset.id;
+                    
+                    row.querySelector('.btn-minus').addEventListener('click', () => {
+                        CartStore.updateQty(id, -1);
+                        renderItems();
+                    });
+
+                    row.querySelector('.btn-plus').addEventListener('click', () => {
+                        CartStore.updateQty(id, 1);
+                        renderItems();
+                    });
+
+                    row.querySelector('.btn-remove').addEventListener('click', () => {
+                        row.classList.add('fade-out');
+                        setTimeout(() => {
+                            CartStore.remove(id);
+                            renderItems();
+                        }, 300);
+                    });
+                });
+            };
+
+            const init = () => {
+                renderItems();
+            };
+
+            return { init };
+        })();
+
+/**
+ * CANTMAKE CART SYSTEM (Modular)
+ * * This script handles persistent storage for the shopping cart and 
+ * provides a global API to interact with the cart across different pages.
+ */
+
+const CartStore = (() => {
+    const STORAGE_KEY = 'cantmake_cart_data';
+
+    /**
+     * Retrieves the current cart array from localStorage.
+     * @returns {Array} List of product objects.
+     */
+    const getItems = () => {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    };
+
+    /**
+     * Saves the cart array to localStorage and triggers badge updates.
+     * @param {Array} items 
+     */
+    const saveItems = (items) => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+        // Trigger a custom event so other components can react to cart changes
+        window.dispatchEvent(new CustomEvent('cartUpdated', { detail: items }));
+    };
+
+    /**
+     * Adds an item or increments quantity if it exists.
+     * @param {Object} product {id, name, price, thumb, variant}
+     */
+    const add = (product) => {
+        const items = getItems();
+        const existing = items.find(item => item.id === product.id);
+
+        if (existing) {
+            existing.qty += (product.qty || 1);
+        } else {
+            items.push({ ...product, qty: (product.qty || 1) });
+        }
+        saveItems(items);
+    };
+
+    /**
+     * Updates the quantity of a specific item.
+     */
+    const updateQty = (id, delta) => {
+        let items = getItems();
+        const item = items.find(i => i.id === id);
+        if (item) {
+            item.qty += delta;
+            if (item.qty <= 0) {
+                items = items.filter(i => i.id !== id);
+            }
+            saveItems(items);
+        }
+    };
+
+    /**
+     * Removes an item entirely.
+     */
+    const remove = (id) => {
+        const items = getItems().filter(item => item.id !== id);
+        saveItems(items);
+    };
+
+    return { getItems, add, updateQty, remove };
+})();
+
+/**
+ * CART UI MANAGER
+ * Handles visual updates to the global cart badge.
+ */
+const CartUI = (() => {
+    const BADGE_CLASS = 'cart-badge';
+
+    /**
+     * Updates all elements with the .cart-badge class.
+     */
+    const updateBadge = () => {
+        const items = CartStore.getItems();
+        const totalCount = items.reduce((sum, item) => sum + item.qty, 0);
+        
+        document.querySelectorAll(`.${BADGE_CLASS}`).forEach(badge => {
+            badge.innerText = totalCount;
+            // Hide badge if empty for a cleaner look
+            badge.style.display = totalCount > 0 ? 'flex' : 'none';
+        });
+    };
+
+    const init = () => {
+        // 1. Initial check when the script runs
+        updateBadge();
+        
+        // 2. Listen for internal cart updates (actions within the same page)
+        window.addEventListener('cartUpdated', updateBadge);
+
+        /**
+         * FEATURE: CROSS-TAB SYNCHRONIZATION
+         * Description: If the user has multiple tabs open and adds an item 
+         * in Tab A, Tab B's badge will update immediately without a refresh.
+         */
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'cantmake_cart_data') {
+                updateBadge();
+            }
+        });
+
+        /**
+         * FEATURE: BACK-FORWARD CACHE (BFCache) HANDLING
+         * Description: Browsers often 'freeze' pages in memory when navigating away.
+         * When clicking the 'Back' button, standard load events don't fire.
+         * 'pageshow' ensures the badge is re-checked every time the page appears.
+         */
+        window.addEventListener('pageshow', (event) => {
+            updateBadge();
+        });
+    };
+
+    return { init, updateBadge };
+})();

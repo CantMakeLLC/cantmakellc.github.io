@@ -1,0 +1,94 @@
+/* --- FEATURE: CART TABLE & ITEMS --- */
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+        }
+
+        .qty-btn {
+            background: transparent;
+            border: none;
+            padding: 4px 10px;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* --- FEATURE: SUMMARY PANEL --- */
+        .summary-card {
+            background-color: var(--marquee-bg, #f8f9fa);
+            padding: 2rem;
+            border-radius: 4px;
+            position: sticky;
+            top: calc(var(--nav-height) + 60px);
+        }
+
+        [data-bs-theme="dark"] .summary-card {
+            background-color: #151515;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+            border: none;
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--btn-gold);
+        }
+
+        /* --- FEATURE: PAYMENT METHOD SELECTOR --- */
+        .payment-option {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 4px;
+        }
+
+        .payment-option:hover {
+            border-color: var(--btn-gold);
+        }
+
+        .payment-option input:checked + label {
+            font-weight: 700;
+        }
+
+        .payment-radio {
+            accent-color: var(--btn-gold);
+        }
+
+        /* Fade animation for item removal */
+        .fade-out {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
