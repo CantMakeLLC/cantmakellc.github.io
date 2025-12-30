@@ -402,7 +402,7 @@ body {
 
         .about-hero{
     position: relative;
-    background-image: url("/images/BG/elsa1.jpg");
+    background-image: url("/images/BG/empty.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
