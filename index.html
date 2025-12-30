@@ -54,9 +54,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4"></script>
 
+    
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <header id="site-header" class="fixed-top">
         <!-- Collapsible Upper Part: Marquee -->
@@ -104,7 +108,7 @@
                         </div>
                         <div class="d-lg-none">
                             <a href="/index.html">
-                                <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:100px;">
+                                <img src="/images/logo_banner.png" alt="CANTMAKE" class="img-fluid" style="max-width:100px;">
                             </a>
                         </div>
                     </div>
@@ -172,7 +176,7 @@
     <!-- Mobile Offcanvas Menu -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title serif fw-bold" id="mobileMenuLabel">CANTMAKE.</h5>
+            <h5 class="offcanvas-title serif fw-bold" id="mobileMenuLabel">CAN'TMAKE.</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -192,29 +196,18 @@
 
         <!-- 1. CAROUSEL SLIDER -->
         <section id="hero-carousel" class="main-carousel carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3"></button>
-            </div>
+
             <div class="carousel-inner">
 
                 <!--item 1-->
                 <div class="carousel-item active">
+                    <a href="/Webpages/ProductsDetails.html">
                     <!-- Placeholder color for actual images -->
-                    <img src="images/products/BG/kate_BG.jpg" class="d-none d-lg-block w-100 object-fit-cover">
-                    <img src="images/products/Cheeks/kate_daki.png" class="d-block d-lg-none w-100 object-fit-cover">
+                    <img src="images/BG/banner1.jpg" class="w-100 object-fit-cover">
                         <div class="container px-lg-5">
-                            <div class="carousel-caption d-none d-md-block text-dark">
-                                <h2 class="serif display-2 fw-bold mb-3">The Velvet <br>Collection</h2>
-                                <p class="lead mb-4">Softness defined. Discover our latest matte lipsticks.</p>
-                                <a href="#"
-                                    class="btn btn-dark px-4 py-2 rounded-0 text-uppercase tracking-widest small">Shop
-                                    Now</a>
-                            </div>
+                            
                         </div>
-                    
+                    </a>
                 </div>
 
                 <!--item 2-->
@@ -262,6 +255,14 @@
 
 
             </div>
+
+            <div class="carousel-indicators mt-3 mb-2 d-flex justify-content-center gap-2" role="tablist">
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
@@ -338,7 +339,7 @@
         </section>
     
         <!-- 3. FOLLOW US / INSTAGRAM -->
-        <section class="py-5 border-top border-bottom" style="background: var(--marquee-bg);">
+        <section class="py-5 border-top border-bottom" style="background: var(--bg-gradient);">
             <div class="container px-lg-5">
                 <div class="text-center mb-5">
                     <h2 class="serif display-6 fw-bold mb-3">Follow our Journey</h2>
@@ -371,7 +372,7 @@
     
     </main>
 
-    <footer class="cantmake-footer">
+    <footer class="cantmake-footer" style="background: var(--bg-gradient);">
          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
         <div class="container-fluid px-lg-5">
     
@@ -382,7 +383,7 @@
                     <!-- Branding & Philosophy -->
                     <div class="col-12 col-lg-3">
                         <a href="#" class="footer-logo serif text-dark text-decoration-none d-block mb-3">
-                            <img src="images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:250px;">
+                            <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:250px;">
                         </a>
                         <p class="footer-brand-text small text-muted pe-lg-5">
                             Delivering that special sparkle to your day
@@ -471,6 +472,8 @@
     
     <!-- Custom Logic -->
     <script src="/js/add_as_we_go.js"></script>
+
+
 </body>
 
 </html>
