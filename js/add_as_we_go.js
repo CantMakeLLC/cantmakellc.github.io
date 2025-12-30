@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     DetailManager.init();
     CartPageManager.init();
     CartUI.init();
-
+    SyncManager.init();
     /**
              * Safety Sync: Explicitly trigger a badge update from index.html 
              * to ensure storage and UI are perfectly aligned on home load.
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (typeof CartUI !== 'undefined') {
                 CartUI.updateBadge();
             }
+            
 });
 
 
@@ -621,3 +622,20 @@ const CartUI = (() => {
 
     return { init, updateBadge };
 })();
+
+
+
+        /**
+         * GLOBAL SYNC MANAGER (BFCache Support)
+         */
+        const SyncManager = (() => {
+            const updateUI = () => {
+                if (typeof CartUI !== 'undefined') CartUI.updateBadge();
+            };
+            const init = () => {
+                updateUI();
+                window.addEventListener('pageshow', updateUI);
+            };
+            return { init };
+        })();
+

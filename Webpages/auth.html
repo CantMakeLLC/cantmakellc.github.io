@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <!--Meta porperties-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="\images\favicon.ico\favicon.ico" type="image/svg+xml">
+    <title>CAN'TMAKE - Special makeup for that special occasion</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CANTMAKE - Special makeup for that special occasion">
+    <meta property="og:url" content="https://www.cantmakellc.github.io">
+    <meta property="og:image" content="images\favicon.ico\favicon.ico">
+    <meta property="og:description" content="CAN'TMAKE is a makeup brand where you can trust! ">
+    <meta property="og:site_name" content="CAN'TMAKE">
+    
+    <!--Favicon-->
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon.ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <style>
+        /* --- CORE DESIGN TOKENS --- */
+        :root {
+            --transition-speed: 0.35s;
+            --nav-height: 80px;
+            --accent-color: #000;
+            --text-muted: #6c757d;
+            --border-color: #dee2e6;
+            --card-bg: #ffffff;
+            --btn-gold: #d4a373;
+            --success-green: #28a745;
+            --error-red: #dc3545;
+        }
+
+        [data-bs-theme="dark"] {
+            --accent-color: #f8f9fa;
+            --text-muted: #adb5bd;
+            --border-color: #343a40;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .serif { font-family: 'Playfair Display', serif; }
+
+        /* --- AUTH LAYOUT --- */
+        .auth-hero { padding: 80px 0 40px; }
+
+        .auth-container {
+            max-width: 450px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .auth-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 4px;
+        }
+
+        .auth-tab-nav {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-tab {
+            padding-bottom: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .auth-tab.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--btn-gold);
+        }
+
+        /* --- FORM STYLING --- */
+        .form-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border-radius: 0;
+            padding: 12px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: transparent;
+            color: var(--accent-color);
+            border-color: var(--btn-gold);
+            box-shadow: none;
+        }
+
+        .is-valid-requirement {
+            color: var(--success-green) !important;
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.75rem;
+            margin-top: 5px;
+            font-weight: 700;
+            display: none; 
+        }
+
+        .password-wrapper { position: relative; }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .password-toggle:hover { color: var(--accent-color); }
+
+        .btn-auth {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+            border: none;
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            border-radius: 0;
+            transition: background-color 0.3s;
+        }
+
+        .btn-auth:hover { background-color: var(--btn-gold); }
+
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+
+        /* --- PLACEHOLDERS --- */
+        .header-space { height: var(--nav-height); }
+        .footer-space { margin-top: auto; padding: 40px 0; border-top: 1px solid var(--border-color); }
+
+        /* --- SUCCESS MODAL --- */
+        .success-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .success-overlay.show { opacity: 1; visibility: visible; }
+
+        .success-modal {
+            background-color: var(--card-bg);
+            padding: 40px;
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+            border-radius: 4px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .success-overlay.show .success-modal { transform: translateY(0); }
+
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success-green);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header id="site-header" class="fixed-top">
+        <!-- Collapsible Upper Part: Marquee -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over ¥15000</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the Super Kawaii collection</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Free global shipping on orders over ¥15000</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ New arrival: the Super Kawaii collection</span>
+                <span class="px-5 text-uppercase fw-light tracking-widest">✨ Sign up for 15% off your first order</span>
+            </div>
+        </div>
+
+        <!-- Sticky Lower Part: Navbar -->
+        <nav class="main-nav">
+
+            <!-- Search Overlay Container -->
+            <div id="search-container" class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="search-input" class="search-field" placeholder="Search our collection...">
+                    <button id="search-submit" class="search-submit-btn" aria-label="Perform search">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button id="search-close" class="search-close-btn" aria-label="Close search">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="container-fluid px-lg-5">
+                <div class="row align-items-center">
+
+                    <!-- Left: Navigation (Desktop) / Logo (Mobile) -->
+                    <div class="col-5 col-lg-5 order-1 order-lg-1 text-start text-lg-start">
+                        <div class="d-none d-lg-flex gap-4">
+                            <a href="/Webpages/allitems.html" class="nav-link-custom">New Arrivals</a>
+                            <a href="/Webpages/Cheeks/cheeks_list.html" class="nav-link-custom">Cheeks</a>
+                            <a href="/Webpages/Eyes/Menu.html" class="nav-link-custom">Eyes</a>
+                            <a href="#" class="nav-link-custom">Lips</a>
+                        </div>
+                        <div class="d-lg-none">
+                            <a href="/index.html">
+                                <img src="/images/logo_banner.png" alt="CANTMAKE" class="img-fluid" style="max-width:100px;">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Center: Logo (Desktop Only) -->
+                    <div class="col-lg-4 d-none d-lg-block order-lg-2 d-flex justify-content-center align-items-center">
+                        <a href="/index.html">
+                            <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:180px;">
+                        </a>
+                    </div>
+
+                    <!-- Right: Icons + Toggle -->
+                    <div class="col-7 col-lg-3 order-3 order-lg-3 d-flex justify-content-end align-items-center gap-3 gap-md-4">
+                        <a href="/Webpages/about.html" class="nav-link-custom d-none d-xl-inline-block me-3">About us</a>
+
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" class="btn btn-link p-0 text-reset border-0 shadow-none">
+                            <i class="bi bi-sun sun-icon fs-5"></i>
+                            <i class="bi bi-moon-stars moon-icon fs-5"></i>
+                        </button>
+
+                        <!--Search icon-->
+                        <a href="#" class="icon-link position-relative" id="search-trigger" aria-label="Search">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </a>
+
+                        <!--Cart icon-->
+                        <a href="/Webpages/cart/cart.html" class="icon-link position-relative" aria-label="Cart">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            <span class="cart-badge">0</span>
+                        </a>
+
+                        <!-- Account Icon -->
+                        <a href="/Webpages/auth.html" class="icon-link" aria-label="Account">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </a>
+
+                        <button class="mobile-toggle d-lg-none ms-2" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title serif fw-bold" id="mobileMenuLabel">CAN'TMAKE.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-4">
+                <a href="/Webpages/allitems.html" class="nav-link-custom fs-5">New Arrivals</a>
+                <a href="/Webpages/Cheeks/cheeks_list.html" class="nav-link-custom fs-5">Cheeks</a>
+                <a href="/Webpages/Eyes/eyes_list.html" class="nav-link-custom fs-5">Eyes</a>
+                <a href="/Webpages/Lips/lips_list.html" class="nav-link-custom fs-5">Lips</a>
+                <hr>
+                <a href="/Webpages/about.html" class="nav-link-custom">About Us</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Popup Module -->
+    <div id="success-popup" class="success-overlay">
+        <div class="success-modal shadow-lg">
+            <div class="success-icon">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h4 class="serif fw-bold mb-2">Success</h4>
+            <p class="text-muted small mb-0">Welcome to CANTMAKE Kyoto. Redirecting you home...</p>
+        </div>
+    </div>
+
+    <main class="container px-4 py-5 flex-grow-1">
+        <div class="auth-hero text-center">
+            <h1 class="serif display-5 fw-bold mb-2">My Account</h1>
+            <p class="text-muted small text-uppercase tracking-widest">Login or Join the Kyoto Circle</p>
+        </div>
+
+        <div class="auth-container">
+            <div class="auth-card shadow-sm">
+                
+                <div class="auth-tab-nav">
+                    <div class="auth-tab active" data-target="login-form">Login</div>
+                    <div class="auth-tab" data-target="register-form">Register</div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="mb-4">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control email-input" placeholder="name@example.com" required>
+                        <div class="error-message">(wrong)</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control password-field" placeholder="••••••••" required>
+                            <span class="password-toggle"><i class="bi bi-eye"></i></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="small text-muted" for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="small text-decoration-none text-muted">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Sign In</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="mb-4">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control email-input" placeholder="name@example.com" required>
+                        <div class="error-message">(wrong)</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Create Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control password-field" placeholder="••••••••" required>
+                            <span class="password-toggle"><i class="bi bi-eye"></i></span>
+                        </div>
+                        <div class="form-text small text-muted mt-2 password-hint">Minimum 8 characters.</div>
+                    </div>
+                    <button type="submit" class="btn-auth">Create Account</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="cantmake-footer" style="background: var(--bg-gradient);">
+         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+        <div class="container-fluid px-lg-5">
+    
+            <!-- Main Footer Navigation -->
+            <div class="footer-top-row pt-5 pb-4">
+                <div class="row gy-5">
+    
+                    <!-- Column 1: Branding -->
+                    <div class="col-12 col-lg-3">
+                        <a href="#" class="footer-logo serif text-dark text-decoration-none d-block mb-3">
+                            <img src="/images/logo_banner.svg" alt="CANTMAKE" class="img-fluid" style="max-width:250px;">
+                        </a>
+                        <p class="footer-brand-text small text-muted pe-lg-5">
+                            Delivering that special sparkle to your day
+                        </p>
+                        <div class="footer-social-cluster mt-4 d-flex gap-3">
+                            <a href="https://www.facebook.com" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--facebook icon (somehow)-->
+                                    <path
+                                        d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.49 0-1.953.925-1.953 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z"/>
+                                </svg></a>
+                            <a href="https://x.com" class="social-icon-link"><svg width="18" height="18" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <!--Bird icon-->
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <!-- Column 5: Support -->
+                    <div class="col-6 col-md-3 col-lg-2 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Inquiries</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="mailto:cantmakellc@protonmail.com?subject=Products Inquiry&body=To whom it may concern" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- Column 2: Products -->
+                    <div class="col-6 col-md-3 col-lg-2 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Products</h6>
+                        <ul class="footer-link-list list-unstyled">
+                            <li><a href="/Webpages/allitems.html" class="footer-link">New Arrivals</a></li>
+                            <li><a href="/Webpages/Cheeks/cheeks_list.html" class="footer-link">Cheek Makeup</a></li>
+                            <li><a href="/Webpages/Eyes/eyes_list.html   " class="footer-link">Eye Makeup</a></li>
+                            <li><a href="/Webpages/Lips/lips_list.html" class="footer-link">Lip Products</a></li>
+                            
+                        </ul>
+                    </div>
+    
+    
+                    
+
+                    <!-- Column 5: maps -->
+                    <div class="col-6 col-md-6 col-lg-5 text-center">
+                        <h6 class="footer-heading text-uppercase tracking-widest mb-4">Shop Locator</h6>
+                        <div class="mapouter">
+                                    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+                                            marginwidth="0"
+                                            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=tokyo tower&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+                                            href="https://nicemail.cc">nicemail</a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            width: 100%;
+                                            height: 200px;
+                                        }
+                                
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            width: 100%;
+                                            height: 200px;
+                                        }
+                                
+                                        .gmap_iframe {
+                                            height: 200px !important;
+                                        }
+                                    </style>
+                                </div>
+                    </div>
+
+                </div>
+            </div>
+    
+            <!-- Copyright & Bottom Nav -->
+            <div class="footer-bottom-row py-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 text-center text-md-start">
+                        <small class="text-muted tracking-widest text-uppercase" style="font-size: 0.65rem;">© CANTMAKE KYOTO. All Rights Reserved.</small>
+                    </div>
+                    <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mx-2"><a href="/Webpages/Privacy.html" class="footer-link-small">Privacy Policy</a></li>
+                            <li class="list-inline-item mx-2"><a href="/Webpages/Privacy.html" class="footer-link-small">Terms of Service</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    </footer>
+
+    <!-- External Script Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <script src="/js/add_as_we_go.js"></script>
+
+    <script>
+        /**
+         * AUTH TAB MANAGER
+         */
+        const AuthTabManager = (() => {
+            let tabs, forms;
+            const switchTab = (targetId) => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                const targetTab = document.querySelector(`[data-target="${targetId}"]`);
+                const targetForm = document.getElementById(targetId);
+                if (targetTab) targetTab.classList.add('active');
+                if (targetForm) targetForm.classList.add('active');
+                document.querySelectorAll('.error-message').forEach(err => err.style.display = 'none');
+            };
+            const init = () => {
+                tabs = document.querySelectorAll('.auth-tab');
+                forms = document.querySelectorAll('.auth-form');
+                if (!tabs.length) return;
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => switchTab(tab.getAttribute('data-target')));
+                });
+            };
+            return { init };
+        })();
+
+        /**
+         * PASSWORD VISIBILITY MANAGER
+         */
+        const PasswordManager = (() => {
+            const init = () => {
+                const toggles = document.querySelectorAll('.password-toggle');
+                toggles.forEach(toggle => {
+                    toggle.addEventListener('click', function() {
+                        const input = this.previousElementSibling;
+                        const icon = this.querySelector('i');
+                        const isPass = input.type === 'password';
+                        input.type = isPass ? 'text' : 'password';
+                        icon.classList.replace(isPass ? 'bi-eye' : 'bi-eye-slash', isPass ? 'bi-eye-slash' : 'bi-eye');
+                    });
+                });
+            };
+            return { init };
+        })();
+
+        /**
+         * PASSWORD REQUIREMENT OBSERVER
+         */
+        const PasswordObserver = (() => {
+            const CONFIG = { MIN_LENGTH: 8, VALID_CLASS: 'is-valid-requirement' };
+            const init = () => {
+                const fields = document.querySelectorAll('.password-field');
+                fields.forEach(field => {
+                    field.addEventListener('input', (e) => {
+                        const isValid = e.target.value.length >= CONFIG.MIN_LENGTH;
+                        field.classList.toggle(CONFIG.VALID_CLASS, isValid);
+                        const hint = field.closest('.mb-4').querySelector('.password-hint');
+                        if (hint) hint.classList.toggle('text-success', isValid);
+                    });
+                });
+            };
+            return { init };
+        })();
+
+        /**
+         * AUTH ACTION MANAGER
+         */
+        const AuthActionManager = (() => {
+            const CONFIG = { MODAL_ID: 'success-popup', REDIRECT_DELAY: 2500, REDIRECT_URL: 'index.html', MIN_PASS_LENGTH: 8 };
+            const validate = (form) => {
+                const emailInput = form.querySelector('.email-input');
+                const passInput = form.querySelector('.password-field');
+                const errorDisplay = form.querySelector('.error-message');
+                let isEmailValid = emailInput.value.includes('@');
+                let isPassValid = passInput.value.length >= CONFIG.MIN_PASS_LENGTH;
+                if (!isEmailValid) {
+                    errorDisplay.style.display = 'block';
+                    emailInput.style.borderColor = 'var(--error-red)';
+                } else {
+                    errorDisplay.style.display = 'none';
+                    emailInput.style.borderColor = '';
+                }
+                return isEmailValid && isPassValid;
+            };
+            const init = () => {
+                const forms = document.querySelectorAll('.auth-form');
+                forms.forEach(form => {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        if (validate(form)) {
+                            document.getElementById(CONFIG.MODAL_ID).classList.add('show');
+                            setTimeout(() => window.location.href = CONFIG.REDIRECT_URL, CONFIG.REDIRECT_DELAY);
+                        }
+                    });
+                    form.querySelector('.email-input').addEventListener('input', (e) => {
+                        if (e.target.value.includes('@')) {
+                            form.querySelector('.error-message').style.display = 'none';
+                            e.target.style.borderColor = '';
+                        }
+                    });
+                });
+            };
+            return { init };
+        })();
+
+        /**
+         * FORM RESET MANAGER
+         */
+        const FormResetManager = (() => {
+            const resetAll = () => document.querySelectorAll('form').forEach(f => f.reset());
+            const init = () => {
+                resetAll();
+                window.addEventListener('pageshow', resetAll);
+            };
+            return { init };
+        })();
+
+        // Initialize Authentication-specific modules
+        document.addEventListener("DOMContentLoaded", () => {
+            AuthTabManager.init();
+            PasswordManager.init();
+            PasswordObserver.init();
+            AuthActionManager.init();
+            FormResetManager.init();
+        });
+    </script>
+</body>
+</html>
