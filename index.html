@@ -9,7 +9,7 @@
     <link rel="icon" href="\images\favicon.ico\favicon.ico" type="image/svg+xml">
     <title>CAN'TMAKE - Special makeup for that special occasion</title>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="CAN'TMAKE - Special makeup for that special occasion">
+    <meta property="og:title" content="CANTMAKE - Special makeup for that special occasion">
     <meta property="og:url" content="https://www.cantmakellc.github.io">
     <meta property="og:image" content="images\favicon.ico\favicon.ico">
     <meta property="og:description" content="CAN'TMAKE is a makeup brand where you can trust! ">
@@ -74,6 +74,23 @@
 
         <!-- Sticky Lower Part: Navbar -->
         <nav class="main-nav">
+
+            <!-- Search Overlay Container -->
+            <div id="search-container" class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="search-input" class="search-field" placeholder="Search our collection...">
+                    <button id="search-submit" class="search-submit-btn" aria-label="Perform search">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button id="search-close" class="search-close-btn" aria-label="Close search">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
             <div class="container-fluid px-lg-5">
                 <div class="row align-items-center">
 
@@ -110,9 +127,12 @@
                         </button>
 
                         <!--Search icon-->
-                        <button id="search-trigger" class="btn btn-link p-0 text-reset border-0 shadow-none" aria-label="Open search">
-                            <i class="bi bi-search fs-5"></i>
-                        </button>
+                        <a href="#" class="icon-link position-relative" id="search-trigger" aria-label="Search">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </a>
 
                         <!--Cart icon-->
                         <a href="#" class="icon-link position-relative" aria-label="Cart">

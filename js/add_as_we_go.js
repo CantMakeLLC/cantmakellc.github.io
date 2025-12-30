@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Initializes the search functionality (event listeners, UI references, etc.)
+    SearchManager.init();
+    
+    // You can also initialize other modules here
+    ThemeManager.init();
+    ScrollManager.init();
+});
+
+
 /**
  * THEME MANAGER
  * Handles persistence and system scheme detection.
@@ -71,18 +81,15 @@ const ScrollManager = (() => {
   return { init };
 })();
 
-// Initialize modules on load
-document.addEventListener("DOMContentLoaded", () => {
-  ThemeManager.init();
-  ScrollManager.init();
-});
 
 
 // Get the top page button:
 let mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -96,75 +103,89 @@ function scrollFunction() {
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-} 
-
-
+}
 
 //search function (useless)
 /**
-         * NEW FEATURE: SEARCH MANAGER
-         * Description: Handles the toggle logic, focus management, and search execution.
-         * Self-contained and modular for easy maintenance.
-         */
-        const SearchManager = (() => {
-            const UI = {
-                trigger: document.getElementById('search-trigger'),
-                container: document.getElementById('search-container'),
-                close: document.getElementById('search-close'),
-                input: document.getElementById('search-input'),
-                submit: document.getElementById('search-submit')
-            };
+ * NEW FEATURE: SEARCH MANAGER
+ * Description: Handles the toggle logic, focus management, and search execution.
+ * Self-contained and modular for easy maintenance.
+ */
+const SearchManager = (() => {
+  // Configuration: Change these IDs to match your specific HTML structure
+  const CONFIG = {
+    TRIGGER_ID: "search-trigger",
+    CONTAINER_ID: "search-container",
+    CLOSE_ID: "search-close",
+    INPUT_ID: "search-input",
+    SUBMIT_ID: "search-submit",
+    ACTIVE_CLASS: "active",
+  };
 
-            /**
-             * Performs the actual search logic.
-             */
-            const executeSearch = () => {
-                const query = UI.input.value.trim();
-                if (query.length > 0) {
-                    console.log(`Executing search for: ${query}`);
-                    // In a real app, window.location.href = `/search?q=${encodeURIComponent(query)}`;
-                    UI.input.value = "";
-                    toggle(false);
-                }
-            };
+  // Internal cache for UI elements
+  const UI = {};
 
-            /**
-             * Toggles the search overlay visibility.
-             * @param {boolean} force - Optional boolean to force a state.
-             */
-            const toggle = (force) => {
-                const isActive = UI.container.classList.toggle('active', force);
-                if (isActive) {
-                    // Focus the input immediately for better UX
-                    setTimeout(() => UI.input.focus(), 100);
-                }
-            };
+  /**
+   * Performs the actual search logic.
+   */
+  const executeSearch = () => {
+    const query = UI.input.value.trim();
+    if (query.length > 0) {
+      console.log(`Executing modular search for: ${query}`);
+      // Action: Redirect or update UI
+      UI.input.value = "";
+      toggle(false);
+    }
+  };
 
-            const init = () => {
-                if (!UI.trigger) return;
+  /**
+   * Toggles the search overlay visibility.
+   * @param {boolean} force - Optional boolean to force a state.
+   */
+  const toggle = (force) => {
+    const isActive = UI.container.classList.toggle(CONFIG.ACTIVE_CLASS, force);
+    if (isActive) {
+      // Slight delay to ensure visibility transition has begun
+      setTimeout(() => UI.input.focus(), 100);
+    }
+  };
 
-                UI.trigger.addEventListener('click', () => toggle(true));
-                UI.close.addEventListener('click', () => toggle(false));
+  /**
+   * Initializes the search functionality and event listeners.
+   */
+  const init = () => {
+    // Initialize UI references based on CONFIG
+    UI.trigger = document.getElementById(CONFIG.TRIGGER_ID);
+    UI.container = document.getElementById(CONFIG.CONTAINER_ID);
+    UI.close = document.getElementById(CONFIG.CLOSE_ID);
+    UI.input = document.getElementById(CONFIG.INPUT_ID);
+    UI.submit = document.getElementById(CONFIG.SUBMIT_ID);
 
-                // Handle 'Enter' key press
-                UI.input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') executeSearch();
-                });
+    // Exit if essential elements are missing
+    if (!UI.trigger || !UI.container) return;
 
-                // Handle icon click inside the field
-                UI.submit.addEventListener('click', executeSearch);
+    // Event Listeners
+    UI.trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggle(true);
+    });
 
-                // Close on Escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') toggle(false);
-                });
-            };
+    UI.close.addEventListener("click", () => toggle(false));
 
-            return { init };
-        })();
+    UI.input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") executeSearch();
+    });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            ThemeManager.init();
-            ScrollManager.init();
-            SearchManager.init();
-        });
+    UI.submit.addEventListener("click", executeSearch);
+
+    // Accessibility: Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggle(false);
+    });
+  };
+
+  // Public API
+  return { init, toggle, executeSearch };
+})();
+
+
