@@ -1,0 +1,44 @@
+/* --- FEATURE: ALTERNATING PRODUCT LAYOUT --- */
+        .product-section {
+            padding: 100px 0;
+        }
+
+        .product-section:nth-child(even) .row {
+            flex-direction: row-reverse;
+        }
+
+        .product-visual {
+            position: relative;
+            background-color: var(--product-bg);
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .product-visual img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+        }
+
+        .product-section:hover .product-visual img {
+            transform: scale(1.1);
+        }
+
+        /* --- FEATURE: REVEAL ON SCROLL --- 
+           Description: CSS initial states for the reveal animations.
+        */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }

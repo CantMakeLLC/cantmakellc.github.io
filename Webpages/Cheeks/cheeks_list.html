@@ -50,7 +50,6 @@
 
 
 
-
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4"></script>
@@ -193,72 +192,90 @@
         </div>
     </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="py-5 border-bottom" style="background-image: url(/images/BG/empty.jpg); background-position: center;
-    background-repeat: no-repeat;;">
-            <div class="container px-lg-5 text-center py-5">
-                <h6 class="text-uppercase tracking-widest small text-muted mb-3" style="color: black !important;">Winter 2024</h6>
-                <h1 class="serif display-2 fw-bold" style="color: black !important;">The Super Kawaii Collection</h1>
+    <main class="container" style="padding-top: 80px;">
+        
+        <!-- Category Header & Filter Row -->
+        <div class="row align-items-end mb-5 reveal">
+            <div class="col-md-6">
+                <h6 class="text-uppercase tracking-widest small text-muted mb-2">Kyoto Essentials</h6>
+                <h1 class="serif display-4 fw-bold mb-0">The Cheeks Collection</h1>
             </div>
-        </section>
+            <div class="col-md-6 text-md-end mt-4 mt-md-0">
+                <label class="small text-uppercase tracking-wider d-block mb-2">Sort By</label>
+                <select class="form-select filter-select d-inline-block" id="price-filter">
+                    <option value="featured" style="background-color: grey;">Featured</option>
+                    <option value="low" style="background-color: grey;">Price: Low to High</option>
+                    <option value="high" style="background-color: grey;">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
 
-        <!-- Product 1: Image Right -->
-        <section class="product-section">
-            <div class="container px-lg-5">
-                <div class="row align-items-center reveal">
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <h6 class="text-uppercase small fw-bold text-muted mb-2">Super Kawaii Lips</h6>
-                        <h2 class="serif display-4 mb-4">Morning Mist</h2>
-                        <p class="lead text-muted mb-4">A lightweight, high-pigment formula that delivers a smooth matte finish with the comfort of a lip balm. Infused with Kyoto camellia oil.</p>
-                        <a href="#" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase small tracking-widest">Discover Now</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-visual">
-                            <img src="/images/BG/banner4_mobile.png" alt="Lips">
-                        </div>
+        <!-- 4x3 Product Grid (12 Items) -->
+        <div class="row g-4" id="product-grid">
+            <!-- Product Item 1 (New Arrival) -->
+            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
+                <div class="img-container">
+                    <span class="badge-new">New Arrival</span>
+                    <img src="/images/BG/banner3_mobile.png" alt="Kyoto Rose">
+                    <div class="cart-overlay">
+                        <button class="btn btn-add-cart">Add to Cart</button>
                     </div>
                 </div>
+                <h6 class="fw-bold mb-1">Kyoto Rose</h6>
+                <p class="small text-muted mb-0">¥550</p>
             </div>
-        </section>
 
-        <!-- Product 2: Image Left -->
-        <section class="product-section">
-            <div class="container px-lg-5">
-                <div class="row align-items-center reveal">
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <h6 class="text-uppercase small fw-bold text-muted mb-2">Super Kawaii Palette</h6>
-                        <h2 class="serif display-4 mb-4">Translucentm</h2>
-                        <p class="lead text-muted mb-4">A quartet of buttery shadows inspired by the night sky over Gion. Build from a subtle wash of color to a dramatic evening look.</p>
-                        <a href="#" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase small tracking-widest">Explore More</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-visual">
-                            <img src="/images/BG/banner5_mobile.png" alt="Kyoto Radiance">
-                        </div>
+            <!-- Product Item 2 -->
+            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
+                <div class="img-container">
+                    <img src="/images/products/Cheeks/chk1.jpg" alt="Product">
+                    <div class="cart-overlay">
+                        <button class="btn btn-add-cart">Add to Cart</button>
                     </div>
                 </div>
+                <h6 class="fw-bold mb-1">Translucent Powder</h6>
+                <p class="small text-muted mb-0">¥860</p>
             </div>
-        </section>
 
-        <!-- Product 3: Image Right -->
-        <section class="product-section">
-            <div class="container px-lg-5">
-                <div class="row align-items-center reveal">
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <h6 class="text-uppercase small fw-bold text-muted mb-2">Super Kawaii Cheeks</h6>
-                        <h2 class="serif display-4 mb-4">Kyoto Rose</h2>
-                        <p class="lead text-muted mb-4">Inspired by the quiet beauty of spring in Kyoto, Kyoto Rose is a finely milled cheek powder that delivers a delicate flush of color with a naturally radiant finish.</p>
-                        <a href="#" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase small tracking-widest">Shop Now</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-visual">
-                            <img src="/images/BG/banner3_mobile.png" alt="Midnight Silk">
-                        </div>
+            <!-- Product Item 3 -->
+            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
+                <div class="img-container">
+                    <img src="/images/products/Cheeks/chk2.jpg" alt="Product">
+                    <div class="cart-overlay">
+                        <button class="btn btn-add-cart">Add to Cart</button>
                     </div>
                 </div>
+                <h6 class="fw-bold mb-1">Hydrating Tint</h6>
+                <p class="small text-muted mb-0">¥560</p>
             </div>
-        </section>
+
+            <!-- Product Item 4 -->
+            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
+                <div class="img-container">
+                    <img src="/images/products/Cheeks/chk3.jpg" alt="Product">
+                    <div class="cart-overlay">
+                        <button class="btn btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <h6 class="fw-bold mb-1">Velvet Matte </h6>
+                <p class="small text-muted mb-0">¥660</p>
+            </div>
+
+            <!-- Product Item 5 -->
+            <div class="col-6 col-md-4 col-lg-3 product-item reveal">
+                <div class="img-container">
+                    <img src="/images/products/Cheeks/chk4.jpg" alt="Product">
+                    <div class="cart-overlay">
+                        <button class="btn btn-add-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <h6 class="fw-bold mb-1">Precision Powder</h6>
+                <p class="small text-muted mb-0">¥440</p>
+            </div>
+            </div>
+
+            
+
     </main>
 
     <footer class="cantmake-footer" style="background: var(--bg-gradient);">

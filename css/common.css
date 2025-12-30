@@ -8,6 +8,7 @@
     --border-color: #dee2e6;
     --footer-bg: #ffffff;
     --card-bg: #ffffff;
+    --btn-gold: #d4a373;
     --bg-gradient: linear-gradient(45deg, rgb(255, 216, 234) 0%, rgb(255, 255, 255) 40%, rgb(216, 237, 255) 100%);
 }
 
@@ -529,3 +530,161 @@ body {
     transform: scaleX(1.15);
 }
 
+
+
+/* --- FEATURE: ALTERNATING PRODUCT LAYOUT --- */
+        .product-section {
+            padding: 100px 0;
+        }
+
+        .product-section:nth-child(even) .row {
+            flex-direction: row-reverse;
+        }
+
+        .product-visual {
+            position: relative;
+            background-color: var(--product-bg);
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .product-visual img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+        }
+
+        .product-section:hover .product-visual img {
+            transform: scale(1.1);
+        }
+
+        /* --- FEATURE: REVEAL ON SCROLL --- 
+           Description: CSS initial states for the reveal animations.
+        */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        /* cheek list */
+        /* --- FEATURE: PRODUCT GRID & CARD --- 
+           Description: 4x3 grid styling with hover effects. 
+           Ensures images stay "in the box" while providing an elegant UI.
+        */
+        .product-item {
+            margin-bottom: 2rem;
+        }
+
+        .img-container {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-item:hover .img-container img {
+            transform: scale(1.08);
+        }
+
+        /* Add to Cart Overlay */
+        .cart-overlay {
+            position: absolute;
+            bottom: -50px; /* Hidden by default */
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: bottom 0.3s ease;
+            display: flex;
+            justify-content: center;
+        }
+
+        [data-bs-theme="dark"] .cart-overlay {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .product-item:hover .cart-overlay {
+            bottom: 0;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            border-radius: 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+            border: none;
+            padding: 8px;
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--btn-gold);
+        }
+
+        /* --- FILTER DROPDOWN --- */
+        .filter-select {
+            border-radius: 0;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            width: auto;
+            min-width: 200px;
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        /* --- REVEAL ANIMATION (From Selected Code) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NEW FEATURE: NEW ARRIVAL BADGE ---
+           Description: Adds a small overlay badge to highlight new products.
+           Positioned absolutely relative to the image container.
+        */
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--btn-gold);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            z-index: 5;
+            border-radius: 2px;
+            pointer-events: none; /* Ensures the badge doesn't block hover/clicks */
+        }

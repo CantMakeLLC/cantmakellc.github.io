@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ThemeManager.init();
     ScrollManager.init();
     LoaderManager.init();
+    RevealManager.init();
+    CartManager.init();
+    FilterManager.init();
 });
 
 
@@ -209,6 +212,108 @@ const LoaderManager = (() => {
                  * If the page is already loaded, hide immediately.
                  */
                  setTimeout(hide, CONFIG.DISPLAY_TIME);
+            };
+
+            return { init };
+        })();
+
+        /**
+         * REVEAL MANAGER (Selected Code Integration)
+         * Description: Uses IntersectionObserver to trigger animations 
+         * when products scroll into the viewport.
+         */
+        const RevealManager = (() => {
+            const init = () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            };
+            return { init };
+        })();
+
+        /**
+         * CART INTERACTION MANAGER
+         * Description: Handles the "Add to Cart" button feedback.
+         */
+        const CartManager = (() => {
+            const init = () => {
+                document.querySelectorAll('.btn-add-cart').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const originalText = this.innerText;
+                        this.innerText = "Added!";
+                        this.style.backgroundColor = "#28a745"; // Success Green
+                        
+                        setTimeout(() => {
+                            this.innerText = originalText;
+                            this.style.backgroundColor = "";
+                        }, 2000);
+                    });
+                });
+            };
+            return { init };
+        })();
+
+
+        /**
+         * FILTER MANAGER
+         * Description: Sorts products in the grid based on the price-filter select element.
+         */
+        const FilterManager = (() => {
+            const CONFIG = {
+                SELECT_ID: 'price-filter',
+                GRID_ID: 'product-grid',
+                ITEM_CLASS: 'product-item'
+            };
+
+            let originalOrder = [];
+
+            /**
+             * Extracts numeric price value from the product text.
+             */
+            const getPrice = (item) => {
+                const priceText = item.querySelector('p').innerText;
+                return parseFloat(priceText.replace(/[^0-9.]/g, ''));
+            };
+
+            /**
+             * Sorting logic and DOM manipulation.
+             */
+            const applySort = (criteria) => {
+                const grid = document.getElementById(CONFIG.GRID_ID);
+                const items = Array.from(grid.querySelectorAll(`.${CONFIG.ITEM_CLASS}`));
+
+                if (criteria === 'featured') {
+                    // Restore the order as it was on initial page load
+                    originalOrder.forEach(item => grid.appendChild(item));
+                } else {
+                    items.sort((a, b) => {
+                        const priceA = getPrice(a);
+                        const priceB = getPrice(b);
+                        return criteria === 'low' ? priceA - priceB : priceB - priceA;
+                    });
+                    items.forEach(item => grid.appendChild(item));
+                }
+
+                // Re-initialize reveals if necessary (already revealed items stay revealed)
+                RevealManager.init();
+            };
+
+            const init = () => {
+                const select = document.getElementById(CONFIG.SELECT_ID);
+                const grid = document.getElementById(CONFIG.GRID_ID);
+                
+                if (!select || !grid) return;
+
+                // Cache the original state for 'featured' sorting
+                originalOrder = Array.from(grid.querySelectorAll(`.${CONFIG.ITEM_CLASS}`));
+
+                select.addEventListener('change', (e) => applySort(e.target.value));
             };
 
             return { init };
